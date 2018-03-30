@@ -31,7 +31,7 @@ CREATE TABLE teacher (
 CREATE TABLE experiment (
 	  id int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name varchar(255) NOT NULL DEFAULT '' COMMENT '实验名字',
-    introduction text NOT NULL COMMENT '实验简介'
+    introduction text NOT NULL COMMENT '实验简介和要求'
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE term_experiment (
