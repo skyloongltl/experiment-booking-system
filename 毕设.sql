@@ -43,7 +43,6 @@ CREATE TABLE experiment_detail (
     id int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
     date timestamp COMMENT '实验的日期',
     experiment_id int(10) unsigned NOT NULL DEFAULT 0,
-    classroom_id int(10) unsigned NOT NULL DEFAULT 0,
     teacher_id int(10) unsigned NOT NULL DEFAULT 0,
     quotas smallint unsigned NOT NULL DEFAULT 0 COMMENT '名额',
     use_quotas smallint unsigned NOT NULL DEFAULT 0 COMMENT '已用名额'
