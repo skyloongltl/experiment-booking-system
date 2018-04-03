@@ -13,18 +13,18 @@ CREATE TABLE classroom (
 
 CREATE TABLE student (
 	  id int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    number int(11) unsigned NOT NULL DEFAULT 0 COMMENT '学号',
+    number int(11) unsigned NOT NULL COMMENT '学号',
     class int(10) unsigned NOT NULL DEFAULT 0 COMMENT '班级',
-    name char(40) NOT NULL DEFAULT '' COMMENT '姓名',
-    password varchar(255) NOT NULL DEFAULT '' COMMENT '密码',
+    name varchar(40) NOT NULL DEFAULT '' COMMENT '姓名',
+    password varchar(255) NOT NULL COMMENT '密码',
     remember_token VARCHAR (100)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE teacher (
 	  id int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    number int(11) unsigned NOT NULL DEFAULT 0 COMMENT '教师编号',
-    name char(40) unsigned NOT NULL DEFAULT 0 COMMENT '姓名',
-    password varchar(255) NOT NULL DEFAULT '' COMMENT '密码',
+    number int(11) unsigned NOT NULL COMMENT '教师编号',
+    name varchar(40) unsigned NOT NULL DEFAULT 0 COMMENT '姓名',
+    password varchar(255) NOT NULL COMMENT '密码',
     remeber_token varchar(100)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -32,7 +32,7 @@ CREATE TABLE experiment (
 	  id int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name varchar(255) NOT NULL DEFAULT '' COMMENT '实验名字',
     introduction text NOT NULL COMMENT '实验简介和要求'
-)ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+)ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
 
 CREATE TABLE term_experiment (
     term_id int(10) unsigned NOT NULL,
