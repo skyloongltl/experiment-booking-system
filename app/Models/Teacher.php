@@ -2,32 +2,31 @@
 
 namespace App\Models;
 
-use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Model;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class Student extends Model implements JWTSubject, AuthenticatableContract, AuthorizableContract
+class Teacher extends Model implements JWTSubject, AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, CanResetPassword, Authorizable;
 
     protected $fillable = [
-        'number', 'class', 'name', 'password'
+        'name', 'number', 'password'
     ];
 
     protected $hidden = [
-        'password',
+        'password'
     ];
 
     public function experimentDetails()
     {
-        return $this->belongsToMany('App\Models\ExperimentDetail',
-            'student_experiment_detail',
-            'student_id',
-            'experiment_detail_id');
+        return $this->hasMany('App\Models\ExperimentDetail',
+            'teacher_id',
+            'id');
     }
 
     public function getJWTIdentifier()

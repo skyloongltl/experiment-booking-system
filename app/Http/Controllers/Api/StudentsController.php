@@ -8,23 +8,24 @@ use Illuminate\Support\Facades\Auth;
 class StudentsController extends Controller
 {
     protected $guard = 'students';
+
     public function __construct()
     {
-        $this->middleware('auth:api')->except('test');
+        $this->middleware('jwt.auth')->except('login');
     }
 
-    public function test(Request $request)
+    public function login(Request $request)
     {
         $credentials = $request->only('number', 'password');
 
         if ($token = $this->guard()->attempt($credentials)) {
-            return $this->respondWithToken($token);
+            return $this->respondWithToken($token)->setStatusCode(201);
         }
 
         return $this->response->errorUnauthorized('登录失败');
     }
 
-    public function test1()
+    public function getUserDetail()
     {
         return response()->json(
             [
@@ -35,7 +36,7 @@ class StudentsController extends Controller
 
     protected function respondWithToken($token)
     {
-        return response()->json([
+        return $this->response->array([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => $this->guard()->factory()->getTTL() * 60

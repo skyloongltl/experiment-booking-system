@@ -45,6 +45,14 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'students' => [
+            'driver' => 'jwt',
+            'provider' => 'students',
+        ],
+        'teachers' => [
+            'driver' => 'jwt',
+            'provider' => 'teachers',
+        ]
     ],
 
     /*
@@ -69,6 +77,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Student::class,
+        ],
+        'teachers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Teacher::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
